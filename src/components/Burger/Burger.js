@@ -14,7 +14,6 @@ const Burger = ({ ingredients }) => {
     .reduce((prev, curr) => {
       return prev.concat(curr);
     }, []);
-  console.log(ingredientList);
   if (ingredientList.length === 0) {
     ingredientList = <p>Please add ingredients...</p>;
   }
