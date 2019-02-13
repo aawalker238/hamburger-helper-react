@@ -9,9 +9,23 @@ const controls = [
   { label: 'Meat', type: 'meat' }
 ];
 
-const BuildControls = ({ addIngredient, removeIngredient, disabled }) => {
+const BuildControls = ({
+  addIngredient,
+  removeIngredient,
+  disabled,
+  price,
+  purchasable,
+  clearItems,
+  ordered
+}) => {
   return (
     <div className={classes.BuildControls}>
+      <p>
+        Current Price: <strong>${price.toFixed(2)}</strong>{' '}
+        <span onClick={clearItems} className={classes.Clear}>
+          &#10006;
+        </span>
+      </p>
       {controls.map(control => {
         return (
           <BuildControl
@@ -23,6 +37,13 @@ const BuildControls = ({ addIngredient, removeIngredient, disabled }) => {
           />
         );
       })}
+      <button
+        onClick={ordered}
+        disabled={!purchasable}
+        className={classes.OrderButton}
+      >
+        ORDER NOW
+      </button>
     </div>
   );
 };
